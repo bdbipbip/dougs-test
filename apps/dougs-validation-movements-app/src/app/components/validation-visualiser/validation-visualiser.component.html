@@ -1,0 +1,29 @@
+<div class="m-4">
+  <h4 *ngIf="responseType">Réponse pour les inputs de type {{typeLabelMapping[responseType]}}</h4>
+  <div *ngIf="validationResponse" class="response-container">
+    <h4>La synchronisation est <span class="text-red" [class.text-green]="validationResponse.isValid">{{validationResponse.isValid ? 'validée' : 'erronée'}}</span></h4>
+    <div *ngIf="showWrongBalance" class="wrong-balance mb-2">
+      <h5>{{wrongBalanceReasons[0].message}}</h5>
+      <ul>
+        <li *ngFor="let wrongReason of wrongBalanceReasons">
+      <span>Balance incorrecte sur la période du {{wrongReason.missingOperations.startDate}}
+        au {{wrongReason.missingOperations.endDate}}
+        avec une différence de {{wrongReason.missingOperations.difference}}€</span>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="showDuplicatedOperations" class="duplicated">
+      <h5>{{duplicatedOperationsReasons[0].message}}</h5>
+      <ul>
+        <li *ngFor="let duplicatedReason of duplicatedOperationsReasons">
+      <span>
+        Opération {{duplicatedReason.duplicatedOperation.wording}} ({{duplicatedReason.duplicatedOperation.id}})
+        du {{duplicatedReason.duplicatedOperation.date}}
+        pour un montant de {{duplicatedReason.duplicatedOperation.amount}}€
+      </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

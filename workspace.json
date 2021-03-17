@@ -162,7 +162,7 @@
       }
     }
   },
-  "cli": { "defaultCollection": "@nrwl/express" },
+  "cli": { "defaultCollection": "@nrwl/angular" },
   "defaultProject": "dougs-mouvements-validation-server",
   "generators": {
     "@nrwl/angular:application": {

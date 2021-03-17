@@ -1,5 +1,5 @@
 import * as express from 'express';
-import {Express} from 'express';
+import {Express, Response} from 'express';
 import * as request from 'supertest';
 import router from "../routes/router";
 
@@ -62,9 +62,9 @@ describe('test movements validation route', () => {
       message: `I'm a teapot !`,
       reasons: [
         {
-          type: 'DOUBLED_OPERATIONS',
-          message: 'Des opérations sont présentes en double',
-          doubledOperations: {
+          type: 'DUPLICATED_OPERATION',
+          message: 'Opération dupliquée',
+          duplicatedOperation: {
             date: '12/03/2021',
             id: 'id1',
             amount: 100,
@@ -80,5 +80,21 @@ describe('test movements validation route', () => {
         }
       ],
     });
+  });
+
+  it('POST /movements-validation wrong parameters', async () => {
+    const response: Response = await request(server)
+      .post('/api/movements/validation')
+      .send({
+        operations: [],
+        checkpoints: [],
+      });
+    expect(response.status).toEqual(419);
+  });
+
+  it('use any route', async () => {
+    const response: any = await request(server)
+      .get('/');
+    expect(response.body.message).toEqual('The only available route is on POST /api/movements/validation, check the README for more details');
   });
 });

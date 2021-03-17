@@ -13,12 +13,18 @@ export interface Checkpoint {
 export interface Reason {
   type: string;
   message: string;
-  missingOperations?: any;
-  doubledOperations?: any;
+  missingOperations?: MissingOperation;
+  duplicatedOperation?: Operation;
 }
 
 export interface ValidationResponse {
   message: string;
   isValid: boolean;
   reasons?: Reason[];
+}
+
+export interface MissingOperation {
+  startDate: string | Date;
+  endDate: string | Date;
+  difference: number;
 }

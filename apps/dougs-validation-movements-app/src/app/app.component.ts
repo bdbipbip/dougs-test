@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import {Checkpoint, Operation} from "@dougs-test/movements-validation-lib";
+import {Component} from '@angular/core';
+import {Checkpoint, Operation, ValidationResponse} from "@dougs-test/movements-validation-lib";
 import {HttpClient} from "@angular/common/http";
+import {MINIMUM_BODY, VALID_BODY, WRONG_BODY} from "./constants/inputs.const";
 
 @Component({
   selector: 'dougs-test-root',
@@ -8,66 +9,43 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'dougs-validation-movements-app';
-  httpRes: any;
-  operations: Operation[] = [
-    {
-      date: '12/03/2021',
-      id: 'id1',
-      amount: 40,
-    },
-    {
-      date: '12/03/2021',
-      id: 'id1',
-      amount: 40,
-    },
-    {
-      date: '13/03/2021',
-      id: 'id2',
-      amount: 60,
-    },
-    {
-      date: '13/03/2021',
-      id: 'id3',
-      amount: 20,
-    },
-    {
-      date: '16/03/2021',
-      id: 'id4',
-      amount: 100,
-    },
-    {
-      date: '17/03/2021',
-      id: 'id5',
-      amount: 200,
-    },
-    {
-      date: '18/03/2021',
-      id: 'id6',
-      amount: -600,
-    },
-  ];
-  checkpoints: Checkpoint[] = [{
-    date: '10/03/2021',
-    balance: 0,
-  }, {
-    date: '15/03/2021',
-    balance: 100,
-  }, {
-    date: '20/03/2021',
-    balance: 400,
-  }];
+  validationResponse: ValidationResponse;
+  currentRequestedType: string;
+
+  // CUSTOM INPUTS HERE //
+  customBody: {operations: Operation[], checkpoints: Checkpoint[]} = {
+    operations: [],
+    checkpoints: [],
+  };
+  /////////////////////////
+
+  get isCustomBodyInvalid(): boolean {
+    return this.customBody?.checkpoints?.length < 1;
+  }
 
   constructor(private http: HttpClient) {
   }
 
-  async sendRequest(): Promise<void> {
-    const body: any = {
-      operations: this.operations,
-      checkpoints: this.checkpoints,
-    };
+  async sendRequest(type: string = 'VALID'): Promise<void> {
+    this.currentRequestedType = type;
+    const body: {operations: Operation[], checkpoints: Checkpoint[]} = this.getBodyByType(type);
     console.log('body = ', body);
-    this.httpRes = await this.http.post('http://localhost:3333/api/movements/validation', body).toPromise();
-    console.log('res = ', this.httpRes);
+    this.validationResponse = await this.http.post('http://localhost:3333/api/movements/validation', body).toPromise() as ValidationResponse;
+    console.log('validationResponse = ', this.validationResponse);
+  }
+
+
+  private getBodyByType(type: string): {operations: Operation[], checkpoints: Checkpoint[]} {
+    switch (type) {
+      case 'MINI': return MINIMUM_BODY;
+      case 'WRONG': return WRONG_BODY;
+      case 'CUSTOM': return this.customBody;
+      case 'VALID': return VALID_BODY;
+    }
+  }
+
+  reset(): void {
+    this.validationResponse = null;
+    this.currentRequestedType = null;
   }
 }

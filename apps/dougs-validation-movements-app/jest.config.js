@@ -14,6 +14,8 @@ module.exports = {
       },
     },
   },
+  collectCoverage: true,
+  coverageReporters: ['json', 'html'],
   coverageDirectory: '../../coverage/apps/dougs-validation-movements-app',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',

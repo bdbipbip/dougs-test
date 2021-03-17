@@ -1,3 +1,11 @@
 <h1>Dougs Angular validation movements app</h1>
-<button (click)="sendRequest()">Send request</button>
-<pre>{{httpRes | json}}</pre>
+<dougs-validation-movements-app-input-visualiser [customBody]="customBody"></dougs-validation-movements-app-input-visualiser>
+<div class="d-flex m-2">
+  <button type="button" class="btn btn-success mr-2" (click)="sendRequest('MINI')">Tester les inputs minimums</button>
+  <button type="button" class="btn btn-success mr-2" (click)="sendRequest()">Tester les inputs valides</button>
+  <button type="button" class="btn btn-success mr-2" (click)="sendRequest('WRONG')">Tester les inputs erronés</button>
+  <button type="button" class="btn btn-success mr-2" [disabled]="isCustomBodyInvalid" (click)="sendRequest('CUSTOM')">Tester les inputs personnalisés</button>
+  <button type="button" class="btn btn-warning mr-2" (click)="reset()">Effacer la réponse</button>
+</div>
+<dougs-validation-movements-app-validation-visualiser [responseType]="currentRequestedType"
+                                                      [validationResponse]="validationResponse"></dougs-validation-movements-app-validation-visualiser>
