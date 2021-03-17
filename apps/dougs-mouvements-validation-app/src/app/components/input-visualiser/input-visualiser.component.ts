@@ -3,7 +3,7 @@ import {Checkpoint, Operation} from "@dougs-test/movements-validation-lib";
 import {MINIMUM_BODY, VALID_BODY, WRONG_BODY} from "../../constants/inputs.const";
 
 @Component({
-  selector: 'dougs-validation-movements-app-input-visualiser',
+  selector: 'dougs-mouvements-validation-app-input-visualiser',
   templateUrl: './input-visualiser.component.html',
   styleUrls: ['./input-visualiser.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

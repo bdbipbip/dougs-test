@@ -18,6 +18,6 @@
   "projects": {
     "dougs-mouvements-validation-server": { "tags": [] },
     "movements-validation-lib": { "tags": [] },
-    "dougs-validation-movements-app": { "tags": [] }
+    "dougs-mouvements-validation-app": { "tags": [] }
   }
 }

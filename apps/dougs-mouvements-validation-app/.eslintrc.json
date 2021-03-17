@@ -9,7 +9,7 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "parserOptions": {
-        "project": ["apps/dougs-validation-movements-app/tsconfig.*?.json"]
+        "project": ["apps/dougs-mouvements-validation-app/tsconfig.*?.json"]
       },
       "rules": {
         "@angular-eslint/directive-selector": [

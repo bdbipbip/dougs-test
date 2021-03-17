@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Reason, ValidationResponse} from "@dougs-test/movements-validation-lib";
 
 @Component({
-  selector: 'dougs-validation-movements-app-validation-visualiser',
+  selector: 'dougs-mouvements-validation-app-validation-visualiser',
   templateUrl: './validation-visualiser.component.html',
   styleUrls: ['./validation-visualiser.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

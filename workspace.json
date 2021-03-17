@@ -75,34 +75,34 @@
         }
       }
     },
-    "dougs-validation-movements-app": {
+    "dougs-mouvements-validation-app": {
       "projectType": "application",
-      "root": "apps/dougs-validation-movements-app",
-      "sourceRoot": "apps/dougs-validation-movements-app/src",
+      "root": "apps/dougs-mouvements-validation-app",
+      "sourceRoot": "apps/dougs-mouvements-validation-app/src",
       "prefix": "dougs-test",
       "targets": {
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/dougs-validation-movements-app",
-            "index": "apps/dougs-validation-movements-app/src/index.html",
-            "main": "apps/dougs-validation-movements-app/src/main.ts",
-            "polyfills": "apps/dougs-validation-movements-app/src/polyfills.ts",
-            "tsConfig": "apps/dougs-validation-movements-app/tsconfig.app.json",
+            "outputPath": "dist/apps/dougs-mouvements-validation-app",
+            "index": "apps/dougs-mouvements-validation-app/src/index.html",
+            "main": "apps/dougs-mouvements-validation-app/src/main.ts",
+            "polyfills": "apps/dougs-mouvements-validation-app/src/polyfills.ts",
+            "tsConfig": "apps/dougs-mouvements-validation-app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/dougs-validation-movements-app/src/favicon.ico",
-              "apps/dougs-validation-movements-app/src/assets"
+              "apps/dougs-mouvements-validation-app/src/favicon.ico",
+              "apps/dougs-mouvements-validation-app/src/assets"
             ],
-            "styles": ["apps/dougs-validation-movements-app/src/styles.scss"],
+            "styles": ["apps/dougs-mouvements-validation-app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/dougs-validation-movements-app/src/environments/environment.ts",
-                  "with": "apps/dougs-validation-movements-app/src/environments/environment.prod.ts"
+                  "replace": "apps/dougs-mouvements-validation-app/src/environments/environment.ts",
+                  "with": "apps/dougs-mouvements-validation-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -130,32 +130,32 @@
         "serve": {
           "executor": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dougs-validation-movements-app:build"
+            "browserTarget": "dougs-mouvements-validation-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dougs-validation-movements-app:build:production"
+              "browserTarget": "dougs-mouvements-validation-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
-          "options": { "browserTarget": "dougs-validation-movements-app:build" }
+          "options": { "browserTarget": "dougs-mouvements-validation-app:build" }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/dougs-validation-movements-app/src/**/*.ts",
-              "apps/dougs-validation-movements-app/src/**/*.html"
+              "apps/dougs-mouvements-validation-app/src/**/*.ts",
+              "apps/dougs-mouvements-validation-app/src/**/*.html"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/dougs-validation-movements-app"],
+          "outputs": ["coverage/apps/dougs-mouvements-validation-app"],
           "options": {
-            "jestConfig": "apps/dougs-validation-movements-app/jest.config.js",
+            "jestConfig": "apps/dougs-mouvements-validation-app/jest.config.js",
             "passWithNoTests": true
           }
         }

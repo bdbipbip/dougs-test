@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'dougs-validation-movements-app',
+  displayName: 'dougs-mouvements-validation-app',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -16,7 +16,7 @@ module.exports = {
   },
   collectCoverage: true,
   coverageReporters: ['json', 'html'],
-  coverageDirectory: '../../coverage/apps/dougs-validation-movements-app',
+  coverageDirectory: '../../coverage/apps/dougs-mouvements-validation-app',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
