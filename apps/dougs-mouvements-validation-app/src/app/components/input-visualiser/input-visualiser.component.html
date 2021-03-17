@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="showCustom && customBodyIsNotEmpty" class="d-flex">
+  <div *ngIf="showCustom && customBodyIsValid" class="d-flex">
     <div class="operations d-flex flex-column col-6">
       <h4>Liste des opérations personnalisées</h4>
       <ul>
@@ -47,7 +47,7 @@
       </ul>
     </div>
   </div>
-  <h4 *ngIf="showCustom && !customBodyIsNotEmpty" style="padding: 0 30px">
+  <h4 *ngIf="showCustom && !customBodyIsValid" style="padding: 0 30px">
     Importez une liste d'opération et de checkpoints dans le fichier app.component.ts dans la variable customBody pour effectuer des tests custom !
   </h4>
 </div>

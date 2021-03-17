@@ -64,14 +64,6 @@
           "options": {
             "lintFilePatterns": ["libs/movements-validation-lib/**/*.ts"]
           }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/movements-validation-lib"],
-          "options": {
-            "jestConfig": "libs/movements-validation-lib/jest.config.js",
-            "passWithNoTests": true
-          }
         }
       }
     },

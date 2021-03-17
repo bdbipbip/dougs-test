@@ -12,7 +12,6 @@ export const validateMovementsController = async (req: Request, res: Response) =
     const isValid: boolean = reasons.length === 0;
     const message: string = isValid ? 'Accepted' : `I'm a teapot !`;
     const response: ValidationResponse = {isValid, message, reasons};
-    console.log('Response = ', response);
     res.json(response);
   } catch {
     res.status(419).json({

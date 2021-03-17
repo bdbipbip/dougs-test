@@ -1,10 +1,10 @@
-<h1>Dougs Angular validation movements app</h1>
+<h1>Dougs Test Angular validation movements app</h1>
 <dougs-mouvements-validation-app-input-visualiser [customBody]="customBody"></dougs-mouvements-validation-app-input-visualiser>
 <div class="d-flex m-2">
   <button type="button" class="btn btn-success mr-2" (click)="sendRequest('MINI')">Tester les inputs minimums</button>
-  <button type="button" class="btn btn-success mr-2" (click)="sendRequest()">Tester les inputs valides</button>
+  <button type="button" class="btn btn-success mr-2" (click)="sendRequest('VALID')">Tester les inputs valides</button>
   <button type="button" class="btn btn-success mr-2" (click)="sendRequest('WRONG')">Tester les inputs erronés</button>
-  <button type="button" class="btn btn-success mr-2" [disabled]="isCustomBodyInvalid" (click)="sendRequest('CUSTOM')">Tester les inputs personnalisés</button>
+  <button type="button" class="btn btn-success mr-2" [disabled]="!isCustomBodyValid" (click)="sendRequest('CUSTOM')">Tester les inputs personnalisés</button>
   <button type="button" class="btn btn-warning mr-2" (click)="reset()">Effacer la réponse</button>
 </div>
 <dougs-mouvements-validation-app-validation-visualiser [responseType]="currentRequestedType"

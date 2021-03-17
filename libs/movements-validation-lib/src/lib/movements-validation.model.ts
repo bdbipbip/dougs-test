@@ -28,3 +28,8 @@ export interface MissingOperation {
   endDate: string | Date;
   difference: number;
 }
+
+export interface RequestBody {
+  operations: Operation[];
+  checkpoints: Checkpoint[];
+}

@@ -16,6 +16,7 @@ export class ValidationVisualiserComponent implements OnInit {
     'MINI': 'minimum',
     'VALID': 'valide',
     'WRONG': 'erroné',
+    'CUSTOM': 'personnalisé',
   };
 
   constructor() { }
@@ -25,7 +26,7 @@ export class ValidationVisualiserComponent implements OnInit {
   }
 
   get showWrongBalance(): boolean {
-    return this.wrongBalanceReasons?.length > 0
+    return this.wrongBalanceReasons.length > 0
   }
 
   get duplicatedOperationsReasons(): Reason[] {
@@ -33,7 +34,7 @@ export class ValidationVisualiserComponent implements OnInit {
   }
 
   get showDuplicatedOperations(): boolean {
-    return this.duplicatedOperationsReasons?.length > 0
+    return this.duplicatedOperationsReasons.length > 0
   }
 
   ngOnInit(): void {

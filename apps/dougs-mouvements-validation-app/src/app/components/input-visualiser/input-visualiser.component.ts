@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
-import {Checkpoint, Operation} from "@dougs-test/movements-validation-lib";
+import {RequestBody} from "@dougs-test/movements-validation-lib";
 import {MINIMUM_BODY, VALID_BODY, WRONG_BODY} from "../../constants/inputs.const";
 
 @Component({
@@ -10,17 +10,17 @@ import {MINIMUM_BODY, VALID_BODY, WRONG_BODY} from "../../constants/inputs.const
 })
 export class InputVisualiserComponent implements OnInit {
 
-  @Input() customBody: {operations: Operation[], checkpoints: Checkpoint[]};
+  @Input() customBody: RequestBody;
 
   showMini: boolean = false;
   showValid: boolean = false;
   showWrong: boolean = false;
   showCustom: boolean = false;
-  bodyList: {operations: Operation[], checkpoints: Checkpoint[]}[] = [MINIMUM_BODY, VALID_BODY, WRONG_BODY];
+  bodyList: RequestBody[] = [MINIMUM_BODY, VALID_BODY, WRONG_BODY];
   typeCodeList: string[] = ['MINI', 'VALID', 'WRONG'];
   typeLabelList: string[] = ['minimum', 'valide', 'erroné'];
 
-  get customBodyIsNotEmpty(): boolean {
+  get customBodyIsValid(): boolean {
     return this.customBody?.checkpoints?.length > 1;
   }
 
@@ -29,7 +29,7 @@ export class InputVisualiserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getShowByType(type: string = 'valid') {
+  getShowByType(type: string) {
     switch (type) {
       case 'MINI': return this.showMini;
       case 'VALID': return this.showValid;

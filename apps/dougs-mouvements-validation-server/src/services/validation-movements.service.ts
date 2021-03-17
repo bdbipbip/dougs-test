@@ -79,10 +79,6 @@ export class ValidationMovementsService {
   }
 
   private verifyFinalCheckpoint() {
-    console.log('this.currentCheckpointIndex = ', this.currentCheckpointIndex);
-    console.log('this.currentCheckpoint = ', this.currentCheckpoint);
-    console.log('(this.checkpoints.length - 1) = ', (this.checkpoints.length - 1));
-    // ASSOMPTION THAT THERE IS STILL A CHECKPOINT AFTER
     while (this.currentCheckpointIndex !== this.checkpoints.length) {
       this.challengeCheckpointBalance();
       this.iterateCheckpoints();

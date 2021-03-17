@@ -1,6 +1,6 @@
-import {Checkpoint, Operation} from "../../../../../libs/movements-validation-lib/src";
+import {RequestBody} from "@dougs-test/movements-validation-lib";
 
-export const MINIMUM_BODY: {operations: Operation[], checkpoints: Checkpoint[]} = {
+export const MINIMUM_BODY: RequestBody = {
   operations: [],
   checkpoints: [
     {
@@ -13,7 +13,7 @@ export const MINIMUM_BODY: {operations: Operation[], checkpoints: Checkpoint[]} 
   ],
 };
 
-export const VALID_BODY: {operations: Operation[], checkpoints: Checkpoint[]} = {
+export const VALID_BODY: RequestBody = {
   operations: [
     {
       date: '12/03/2021',
@@ -32,7 +32,7 @@ export const VALID_BODY: {operations: Operation[], checkpoints: Checkpoint[]} = 
   ],
 };
 
-export const WRONG_BODY: {operations: Operation[], checkpoints: Checkpoint[]} = {
+export const WRONG_BODY: RequestBody = {
   operations: [
     {
       date: '12/03/2021',

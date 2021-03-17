@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {Checkpoint, Operation, ValidationResponse} from "@dougs-test/movements-validation-lib";
+import {Checkpoint, Operation, RequestBody, ValidationResponse} from "@dougs-test/movements-validation-lib";
 import {HttpClient} from "@angular/common/http";
 import {MINIMUM_BODY, VALID_BODY, WRONG_BODY} from "./constants/inputs.const";
+import {MouvementsValidationService} from "./services/mouvements-validation.service";
 
 @Component({
   selector: 'dougs-test-root',
@@ -13,29 +14,27 @@ export class AppComponent {
   currentRequestedType: string;
 
   // CUSTOM INPUTS HERE //
-  customBody: {operations: Operation[], checkpoints: Checkpoint[]} = {
+  customBody: RequestBody = {
     operations: [],
     checkpoints: [],
   };
   /////////////////////////
 
-  get isCustomBodyInvalid(): boolean {
-    return this.customBody?.checkpoints?.length < 1;
+  get isCustomBodyValid(): boolean {
+    return this.customBody?.checkpoints?.length > 1;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private mouvementsValidationService: MouvementsValidationService) {
   }
 
-  async sendRequest(type: string = 'VALID'): Promise<void> {
+  async sendRequest(type: string): Promise<void> {
     this.currentRequestedType = type;
-    const body: {operations: Operation[], checkpoints: Checkpoint[]} = this.getBodyByType(type);
-    console.log('body = ', body);
-    this.validationResponse = await this.http.post('http://localhost:3333/api/movements/validation', body).toPromise() as ValidationResponse;
-    console.log('validationResponse = ', this.validationResponse);
+    const body: RequestBody = this.getBodyByType(type);
+    this.validationResponse = await this.mouvementsValidationService.sendHttpRequest(body);
   }
 
 
-  private getBodyByType(type: string): {operations: Operation[], checkpoints: Checkpoint[]} {
+  private getBodyByType(type: string): RequestBody {
     switch (type) {
       case 'MINI': return MINIMUM_BODY;
       case 'WRONG': return WRONG_BODY;
