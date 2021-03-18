@@ -1,5 +1,5 @@
-<div class="body-container d-flex flex-column">
-  <div class="buttons-container d-flex m-2">
+<div class="d-flex flex-column">
+  <div class="d-flex m-2">
     <button class="btn btn-info mr-2" btnCheckbox [(ngModel)]="showMini">Afficher les inputs minimums</button>
     <button class="btn btn-info mr-2" btnCheckbox [(ngModel)]="showValid">Afficher les inputs valides</button>
     <button class="btn btn-info mr-2" btnCheckbox [(ngModel)]="showWrong">Afficher les inputs erronés</button>
@@ -7,7 +7,7 @@
   </div>
   <div *ngFor="let body of bodyList; let idx = index">
     <div class="d-flex mt-2" *ngIf="getShowByType(typeCodeList[idx])">
-      <div class="operations d-flex flex-column col-6">
+      <div class="d-flex flex-column col-6">
         <h4>Liste des opérations de type {{typeLabelList[idx]}}</h4>
         <ul>
           <li *ngFor="let operation of body.operations">
@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-      <div class="checkpoints d-flex flex-column col-6">
+      <div class="d-flex flex-column col-6">
         <h4>Liste des checkpoints de type {{typeLabelList[idx]}}</h4>
         <ul>
           <li *ngFor="let cp of body.checkpoints">
@@ -28,26 +28,26 @@
     </div>
   </div>
   <div *ngIf="showCustom && customBodyIsValid" class="d-flex">
-    <div class="operations d-flex flex-column col-6">
+    <div class="d-flex flex-column col-6">
       <h4>Liste des opérations personnalisées</h4>
       <ul>
-        <li *ngFor="let operation of customBody.operations">
+        <li *ngFor="let operation of customBody?.operations">
           <span>Opération {{operation.wording}} ({{operation.id}}), du {{operation.date}}
             d'un montant
             de {{operation.amount}}€</span>
         </li>
       </ul>
     </div>
-    <div class="checkpoints d-flex flex-column col-6">
+    <div class="d-flex flex-column col-6">
       <h4>Liste des checkpoints personnalisées</h4>
       <ul>
-        <li *ngFor="let cp of customBody.checkpoints">
+        <li *ngFor="let cp of customBody?.checkpoints">
           <span>Point de controle du {{cp.date}} avec une balance de {{cp.balance}}€</span>
         </li>
       </ul>
     </div>
   </div>
-  <h4 *ngIf="showCustom && !customBodyIsValid" style="padding: 0 30px">
+  <h4 *ngIf="showCustom && !customBodyIsValid" class="empty-custom-label">
     Importez une liste d'opération et de checkpoints dans le fichier app.component.ts dans la variable customBody pour effectuer des tests custom !
   </h4>
 </div>

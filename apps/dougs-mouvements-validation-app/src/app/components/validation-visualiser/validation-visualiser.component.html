@@ -1,8 +1,8 @@
 <div class="m-4">
   <h4 *ngIf="responseType">Réponse pour les inputs de type {{typeLabelMapping[responseType]}}</h4>
-  <div *ngIf="validationResponse" class="response-container">
+  <div *ngIf="validationResponse">
     <h4>La synchronisation est <span class="text-red" [class.text-green]="validationResponse.isValid">{{validationResponse.isValid ? 'validée' : 'erronée'}}</span></h4>
-    <div *ngIf="showWrongBalance" class="wrong-balance mb-2">
+    <div *ngIf="showWrongBalance" class="mb-2">
       <h5>{{wrongBalanceReasons[0].message}}</h5>
       <ul>
         <li *ngFor="let wrongReason of wrongBalanceReasons">
@@ -12,7 +12,7 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="showDuplicatedOperations" class="duplicated">
+    <div *ngIf="showDuplicatedOperations">
       <h5>{{duplicatedOperationsReasons[0].message}}</h5>
       <ul>
         <li *ngFor="let duplicatedReason of duplicatedOperationsReasons">

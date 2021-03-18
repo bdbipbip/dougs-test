@@ -87,7 +87,7 @@ describe('test movements validation route', () => {
       .post('/api/movements/validation')
       .send({
         operations: [],
-        checkpoints: [],
+        checkpoints: [1 as any, 2 as any],
       });
     expect(response.status).toEqual(419);
   });

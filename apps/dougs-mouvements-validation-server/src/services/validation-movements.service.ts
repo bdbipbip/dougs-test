@@ -35,18 +35,8 @@ export class ValidationMovementsService {
 
   private challengeCheckpointBalance(): void {
     const balance: number = this.currentCheckpoint.balance;
-    const isInvalid: boolean = this.currentAmount !== balance;
-    if (isInvalid) {
-      this.reasons.push({
-        type: 'WRONG_BALANCE',
-        message: 'Opérations manquantes, balance incorrecte',
-        missingOperations: {
-          startDate: this.previousCheckpoint.date,
-          endDate: this.currentCheckpoint.date,
-          difference: this.currentAmount - balance,
-        }
-      })
-    }
+    this.verifyFormat(balance);
+    this.verifyValidity(balance);
   }
 
   private addDoubledOperationReason(operation: Operation) {
@@ -58,7 +48,7 @@ export class ValidationMovementsService {
   }
 
   private treatOperation(operation: Operation) {
-    while(DateUtils.dateIsPosterior(operation.date, this.currentCheckpoint.date)) {
+    while (DateUtils.dateIsPosterior(operation.date, this.currentCheckpoint.date)) {
       this.challengeCheckpointBalance();
       this.iterateCheckpoints();
     }
@@ -82,6 +72,28 @@ export class ValidationMovementsService {
     while (this.currentCheckpointIndex !== this.checkpoints.length) {
       this.challengeCheckpointBalance();
       this.iterateCheckpoints();
+    }
+  }
+
+  private verifyFormat(balance: number): void {
+    const isWrongFormat: boolean = typeof balance !== 'number' || typeof this.currentAmount !== 'number';
+    if (isWrongFormat) {
+      throw new Error();
+    }
+  }
+
+  private verifyValidity(balance: number): void {
+    const isInvalid: boolean = this.currentAmount !== balance;
+    if (isInvalid) {
+      this.reasons.push({
+        type: 'WRONG_BALANCE',
+        message: 'Opérations manquantes, balance incorrecte',
+        missingOperations: {
+          startDate: this.previousCheckpoint.date,
+          endDate: this.currentCheckpoint.date,
+          difference: this.currentAmount - balance,
+        }
+      });
     }
   }
 }

@@ -11,7 +11,9 @@ export const validateMovementsController = async (req: Request, res: Response) =
     const reasons: Reason[] = validationMovementsService.getValidationMovementsReasons();
     const isValid: boolean = reasons.length === 0;
     const message: string = isValid ? 'Accepted' : `I'm a teapot !`;
+    const statusCode: number = isValid ? 202 : 418;
     const response: ValidationResponse = {isValid, message, reasons};
+    res.status(statusCode);
     res.json(response);
   } catch {
     res.status(419).json({
