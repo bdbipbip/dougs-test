@@ -10,7 +10,7 @@ Le serveur NodeJS et l'application Angular ont été entièrement testés.
 
 J'ai décidé de ne pas me contenter de faire un serveur avec une API mais aussi de faire une application Front Angular
 pour avoir un environnement de test et de visualisation des inputs/outputs.  
-C'est ce qui explique l'utilisation de NX qui est un outil permettant une gestion simplifiée des mono repo.
+C'est ce qui explique l'utilisation de NX qui est un outil permettant une gestion simplifiée des "mono repo".
 Il permet notament une gestion ultra simple des librairies partagées.
 
 Dans l'application Angular, j'ai intégré des cas d'utilisations déjà préparés: inputs minimum, inputs valides et inputs erronés.  
@@ -44,7 +44,7 @@ Suite à mon analyse du problème, voici la liste des assomptions du serveur:
 - Le body de la requête POST sur la route /api/movements/validation doit être bien formé suivant le modèle donné.
 - La liste des points de contrôle doit nécessairement contenir 2 objets au minimum
 - Les listes d'objets fournis sont triés par ordre croissant chronologiquement
-- La liste d'opération est chronologiquement comrpise entre le premier et le dernier point de contrôle
+- La liste d'opération est chronologiquement comprise entre le premier et le dernier point de contrôle
 
 Cette liste relativement stricte permet de diminuer considérablement la complexité algorithmique tout en restant réaliste vis à vis du problème donné.
 
@@ -93,8 +93,8 @@ interface MissingOperation {
 Grâce aux assomptions cités ci-dessus la complexité de l'algorithme est de o(n).  
 Les deux premiers points de contrôle sont initialisés instantanément et le serveur boucle ensuite sur la liste d'opérations.
 Il y a une séparation des cas sur la comparaison entre la date de l'opération et la date du point de contrôle. Si la date est antérieure, elle est ajouté au compte dynamique.  
-Dans le cas contraire, un bilan est faire entre le compte dynamique et le point de contrôle. Puis on passe au point de contrôle suivant.  
-Enfin, le cas où un enchainement de point de contrôles après la dernière opération est pris en compte en itérant sur les points de contrôles "restants".
+Dans le cas contraire, un bilan est fait entre le compte dynamique et le point de contrôle. Puis on passe au point de contrôle suivant.  
+Enfin, si un enchainement de point de contrôles est présent après la dernière opération, il pris en compte en itérant sur les points de contrôles "restants".
 
 ## Tests
 
