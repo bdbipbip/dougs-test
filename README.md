@@ -26,7 +26,7 @@ Ces paramètres importés sont visualisables et testable de la même manière.
 
 ## Installation
 
-###Pré-requis
+### Pré-requis
 NodeJS version >= "12.0.0" (nécessaire pour le lancement des tests uniquement)
 
 ### Commandes
@@ -38,7 +38,7 @@ NodeJS version >= "12.0.0" (nécessaire pour le lancement des tests uniquement)
 
 ## Validation des mouvements (problème)
 
-####Assomptions
+#### Assomptions
 
 Suite à mon analyse du problème, voici la liste des assomptions du serveur:
 - Le body de la requête POST sur la route /api/movements/validation doit être bien formé suivant le modèle donné.
@@ -49,7 +49,7 @@ Suite à mon analyse du problème, voici la liste des assomptions du serveur:
 Cette liste relativement stricte permet de diminuer considérablement la complexité algorithmique tout en restant réaliste vis à vis du problème donné.
 
 #### Spec technique serveur
-#####/POST /movements/validation
+##### /POST /movements/validation
 Request body: 
 <pre>
 {  
